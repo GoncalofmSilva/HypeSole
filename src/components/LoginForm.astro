@@ -1,0 +1,40 @@
+---
+
+---
+
+<div class="login_form">
+    <form action="#" method="post">
+        <img src="/images/logo.png">
+        <p>Email</p>
+        <div class="user">
+            <input type="text" name="user" placeholder="Email" required id="email">
+        </div>
+
+        <p class="tag">Password</p>
+        <div class="password">
+            <input type="password" name="password" placeholder="Password" required id="password">
+            <i class="fa-solid fa-eye" id="togglePassword"></i>
+        </div>
+        <!--<p style="opacity: 0; color: red;">Your credentials are incorrect</p>-->
+
+        <a href="/recover/">
+            <p class="forget">Forget Password ?</p>
+        </a>
+
+        <a href="/register/">
+            <p class="register">Não tem conta ?</p>
+        </a>
+
+        <button type="submit" id="doLogin">Login</button>
+
+        <!--<div class="loging_icon">
+                <a href="#"><img src="image/google.png"></a>
+                <a href="#"><img src="image/facebook.png"></a>
+            </div>-->
+
+    </form>
+</div>
+
+<script>
+    import '../scripts/login.js'
+</script>

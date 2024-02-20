@@ -1,0 +1,47 @@
+<div class="login_form">
+    <form action="#" method="post">
+        <img src="/images/logo.png">
+        <p>Nome</p>
+        <div class="user">
+            <input type="text" name="user" placeholder="Nome" required id="name">
+        </div>
+
+        <p class="tag">Apelido</p>
+        <div class="user">
+            <input type="text" name="user" placeholder="Apelido" required id="surname">
+        </div>
+
+        <p class="tag">Email</p>
+        <div class="user">
+            <input type="text" name="user" placeholder="Email" required id="email">
+        </div>
+
+        <p class="tag">Password</p>
+        <div class="password">
+            <input type="password" name="password" placeholder="Password" required id="password">
+            <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+        </div>
+
+        <p class="tag">Confirm Password</p>
+        <div class="password">
+            <input type="password" name="password" placeholder="Password" required id="confPassword">
+            <i class="fa-solid fa-eye-slash" id="toggleConfPassword"></i>
+        </div>
+
+        <button type="submit" id="doRegist">Registar Conta</button>
+
+        <div class="popup" id="popup">
+            <p>An email will sent to you confirming you registration. Thank you!</p>
+            <button type="button" id="closePopup">OK</button>
+        </div>
+
+        <!--<div class="loging_icon">
+                <a href="#"><img src="image/google.png"></a>
+                <a href="#"><img src="image/facebook.png"></a>
+            </div>-->
+
+    </form>
+</div>
+
+<script> import '../scripts/register.js'</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
