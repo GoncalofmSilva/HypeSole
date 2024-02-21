@@ -62,5 +62,5 @@ let closePopup = document.getElementById("closePopup");
 
 closePopup.onclick = function () {
   popup.classList.remove("open-popup");
-  window.location.href = "login.html";
+  window.location.href = "/";
 };

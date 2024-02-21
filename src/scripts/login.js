@@ -25,7 +25,7 @@ let currentPassword = "hypesole" // "Select password from users"
 doLogin.onclick = function(event) {
     event.preventDefault();
     if(email.value == currentEmail && password.value == currentPassword){
-        window.location.href = "index.html"
+        window.location.href = "/"
     }
     else {
         alert("Invalid username or password. Please try again.");
