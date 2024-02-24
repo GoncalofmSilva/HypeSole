@@ -2,21 +2,25 @@
 .container {
     display: flex;
     justify-content: center;
+    align-items: center; /* Para centralizar verticalmente */
+    height: 100vh; /* Faz o container ocupar toda a altura da viewport */
 }
 
 .product-container {
-    margin-top: 150px;
     display: flex;
     align-items: flex-start;
-    padding: 20px;
+    padding: 15px;
+    max-width: 900px;
+    width: 100%;
 }
 
 .product-image {
     margin-right: 20px;
+    width: 500px; /* Define a largura da imagem */
 }
 
 .product-image img {
-    max-width: 200px;
+    max-width: 100%; /* Garante que a imagem se ajuste dentro do contêiner */
     height: auto;
 }
 
@@ -32,6 +36,7 @@
 .product-details p {
     font-size: 16px;
     margin-bottom: 10px;
+    font-weight: bold; /* Adiciona negrito ao texto */
 }
 
 .product-actions {
@@ -44,18 +49,13 @@
     margin-bottom: 10px;
 }
 
-.sizes .title {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
 .sizes label {
     display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px; /* Ajuste esse valor conforme desejado */
-    margin-right: 5px;
-    margin-bottom: 5px;
+    padding: 10px 15px; /* Aumenta o padding para aumentar o espaço ao redor do texto */
+    border: 2px solid #ccc; /* Aumenta a largura da borda */
+    border-radius: 15px; /* Ajusta o raio da borda */
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .quantity-selector {

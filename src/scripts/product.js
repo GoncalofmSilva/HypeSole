@@ -1,12 +1,12 @@
 const products = [
-    {name: "Adidas Shoes", price: 500, id: 1, img: "/images/green.png", sizes: {36: 2, 38: 0, 39: 1}},
-    {name: "Sting Energy Drink", price: 120, id: 2, quantity: 1, img: "/images/green.png",},
-    {name: "Umbrella", price: 500, id: 3, quantity: 1, img: "/images/green.png",},
-    {name: "Cat Food", price: 900, id: 4, quantity: 1, img: "/images/green.png",},
-    {name: "T Shirt", price: 300, id: 5, quantity: 1, img: "/images/green.png" },
-    {name: "Book", price: 100, id: 6, quantity: 1, img: "/images/green.png" },
-    {name: "T Shirt", price: 300, id: 7, quantity: 1, img: "/images/green.png" },
-    {name: "Book", price: 100, id: 8, quantity: 0, img: "/images/green.png" },
+    {name: "Adidas Shoes", price: 500.00, id: 1, img: "/images/green.png", sizes: {36: 2, 38: 0, 39: 1}},
+    {name: "Sting Energy Drink", price: 120.00, id: 2, quantity: 1, img: "/images/green.png",},
+    {name: "Umbrella", price: 500.00, id: 3, quantity: 1, img: "/images/green.png",},
+    {name: "Cat Food", price: 900.00, id: 4, quantity: 1, img: "/images/green.png",},
+    {name: "T Shirt", price: 300.00, id: 5, quantity: 1, img: "/images/green.png" },
+    {name: "Book", price: 100.00, id: 6, quantity: 1, img: "/images/green.png" },
+    {name: "T Shirt", price: 300.00, id: 7, quantity: 1, img: "/images/green.png" },
+    {name: "Book", price: 100.00, id: 8, quantity: 0, img: "/images/green.png" },
 ];
 
 function getProductByURL(url) {
@@ -37,9 +37,8 @@ function updateHtmlWithProduct(product) {
   if (product) {
     // Atualiza o HTML com as propriedades do produto
     document.getElementById("productName").innerText = product.name;
-    document.getElementById(
-      "productPrice"
-    ).innerText = `Price: $${product.price}`;
+    const formattedPrice = product.price.toFixed(2);
+    document.getElementById("productPrice").innerText = `${formattedPrice}€`;
     document.getElementById("productImage").src = product.img;
   } else {
     console.log("Produto não encontrado.");
