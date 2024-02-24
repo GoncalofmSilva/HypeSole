@@ -76,5 +76,37 @@ function destacarLabels() {
   });
 }
 
-// Chame esta função depois que a página carregar para destacar as labels corretamente
+function defaultSize() {
+    // Mapeia todos os tamanhos disponíveis
+    const availableSizes = products.flatMap(product =>
+        Object.keys(product.sizes || {})
+            .map(size => parseInt(size))
+            .filter(size => product.sizes[size] > 0)
+    );
+
+    // Se houver tamanhos disponíveis
+    if (availableSizes.length > 0) {
+        // Encontra o tamanho mínimo disponível
+        const smallestSize = Math.min(...availableSizes);
+
+        // Seleciona automaticamente a label correspondente ao tamanho mínimo
+        const label = document.querySelector(`.sizes label[data-size="${smallestSize}"]`);
+        
+        // Verifica se a label foi encontrada
+        if (label) {
+            // Obtém o conteúdo HTML dentro da label
+            const conteudoHTML = label.innerHTML;
+            // Verifica se o conteúdo HTML é válido
+            if (conteudoHTML) {
+                // Adiciona a classe "clicked" à label
+                label.classList.add("clicked");
+            }
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    defaultSize();
+});
+
 destacarLabels();
