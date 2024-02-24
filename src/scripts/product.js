@@ -27,7 +27,7 @@ function validarUrl() {
   const product = getProductByURL(url);
   if (product) {
     console.log("Produto encontrado:", product);
-    updateHtmlWithProduct(product)
+    updateHtmlWithProduct(product);
   } else {
     console.log("Produto não encontrado.");
   }
@@ -37,7 +37,9 @@ function updateHtmlWithProduct(product) {
   if (product) {
     // Atualiza o HTML com as propriedades do produto
     document.getElementById("productName").innerText = product.name;
-    document.getElementById("productPrice").innerText = `Price: $${product.price}`;
+    document.getElementById(
+      "productPrice"
+    ).innerText = `Price: $${product.price}`;
     document.getElementById("productImage").src = product.img;
   } else {
     console.log("Produto não encontrado.");
@@ -47,20 +49,32 @@ function updateHtmlWithProduct(product) {
 validarUrl(); // Chama a função que valida a URL ao carregar a página
 
 function destacarLabels() {
-    products.forEach(product => {
-        product.sizes && Object.entries(product.sizes).forEach(([size, quantity]) => {
-            const label = document.querySelector(`.sizes label[data-size="${size}"]`);
-            if (label) {
-                if (quantity > 0) {
-                    label.classList.add('yellow');
-                    label.style.cursor = 'pointer'; // Mudar cursor para pointer quando a quantidade for maior que 0
-                } else {
-                    label.classList.add('gray');
-                    label.style.cursor = 'not-allowed'; // Mudar cursor para not-allowed quando a quantidade for 0
-                }
-            }
-        });
-    });
+  // Remove a classe 'clicked' de todas as labels
+  document.querySelectorAll(".sizes label").forEach((label) => {
+    label.classList.remove("clicked");
+  });
+
+  products.forEach((product) => {
+    product.sizes && Object.entries(product.sizes).forEach(([size, quantity]) => {
+        const label = document.querySelector(`.sizes label[data-size="${size}"]`);
+        if (label) {
+          if (quantity > 0) {
+            label.style.cursor = "pointer"; // Mudar cursor para pointer quando a quantidade for maior que 0
+            label.addEventListener('click', () => {
+                // Remove a classe 'clicked' de todas as labels
+                document.querySelectorAll('.sizes label').forEach(label => {
+                    label.classList.remove('clicked');
+                });
+                // Adiciona a classe 'clicked' apenas à label clicada
+                label.classList.add('clicked');
+            });
+          } else {
+            label.style.opacity = "0.5";
+            label.style.cursor = "not-allowed"; // Mudar cursor para not-allowed quando a quantidade for 0
+          }
+        }
+      });
+  });
 }
 
 // Chame esta função depois que a página carregar para destacar as labels corretamente

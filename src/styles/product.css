@@ -85,10 +85,6 @@
     text-align: center;
 }
 
-.yellow {
-    background-color: yellow;
-}
-
-.gray{
+.clicked {
     background-color: gray;
 }
