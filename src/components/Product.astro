@@ -1,0 +1,33 @@
+---
+
+---
+
+<div class="container">
+  <div class="product-container">
+    <div class="product-image">
+      <img id="productImage" src="caminho-para-a-imagem-do-produto.jpg" />
+    </div>
+    <div class="product-details">
+      <h2 id="productName"></h2>
+      <p id="productPrice"></p>
+      <div class="product-actions">
+        <div class="sizes">
+          <label class="sizes" data-size="36">36</label>
+          <label class="sizes" data-size="36_2_2">36 2/2</label>
+          <label class="sizes" data-size="37_1_3">37 1/3</label>
+          <label class="sizes" data-size="38">38</label>
+          <label class="sizes" data-size="38_2_3">38 2/3</label>
+          <label class="sizes" data-size="39">39</label>
+        </div>
+        <div class="quantity-selector">
+          <input type="number" name="quantity" id="quantity" value="1" min="1"/>
+          <button class="add-to-cart-btn">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import "../scripts/product";
+</script>

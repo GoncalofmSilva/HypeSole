@@ -14,7 +14,7 @@ function createProductHTML(product, targetId, targetName) {
     const productIdWithName = product.id === targetId && product.name === targetName;
     if (productIdWithName) {
       return `
-    <a href="/caminho-para-a-pagina-do-produto-${product.name}" style="text-decoration: none;">
+    <a href="/produto-${product.name}" style="text-decoration: none;">
     <div class="card">
         <div class="image">
             <img src="${product.img}" alt="${product.name}">
@@ -38,7 +38,7 @@ function renderProducts(products) {
 
   products.forEach((product, index) => {
     const productHTML = createProductHTML(product, index + 1 ,product.name);
-    if (productHTML !== null) {
+    if (productHTML !== null) { // verifica se o resultado do produto não é igual a null
       productsContainer.innerHTML += productHTML;
     }
   });
