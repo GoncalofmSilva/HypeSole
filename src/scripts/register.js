@@ -1,3 +1,6 @@
+import PocketBase from "pocketbase";
+const pb = new PocketBase("http://127.0.0.1:8090");
+
 // Get the password input and toggle button elements
 let password = document.getElementById("password");
 let togglePassword = document.getElementById("togglePassword");
@@ -33,29 +36,7 @@ let name = document.getElementById("name");
 let surname = document.getElementById("surname");
 let email = document.getElementById("email");
 let confPassword = document.getElementById("confPassword");
-let doRegist = document.getElementById("doRegist");
 let popup = document.getElementById("popup");
-
-doRegist.onclick = function (event) {
-  emailjs.init("Ky4a554dMiXOgxi3a");
-
-  const serviceId = "service_yb9i05g";
-  const templateId = "template_whnlxic";
-
-  event.preventDefault();
-  if (name.value !== "" && surname.value !== "" && email.value !== "" && password.value !== "" && confPassword.value !== "") {
-    if (confPassword.value === password.value) {
-      emailjs.send(serviceId, templateId, {
-        senderemail: `${email.value}`,
-      });
-      popup.classList.add("open-popup");
-    } else {
-      alert("Passwords are different.");
-      // Clear input fields or provide feedback to the user
-      confPassword.value = "";
-    }
-  }
-};
 
 // doClosePopup
 let closePopup = document.getElementById("closePopup");
@@ -64,3 +45,40 @@ closePopup.onclick = function () {
   popup.classList.remove("open-popup");
   window.location.href = "/";
 };
+
+async function searchExistingEmail(email) {
+  const resultList = await pb.collection("users").getList(1, 50, {
+    filter: `email = ${email}`,
+  });
+  console.log(resultList);
+  return resultList;
+}
+
+async function createUser() {
+  // example create data
+  const data = {
+    email: `${email.value}`,
+    emailVisibility: true,
+    password: `${password.value}`,
+    passwordConfirm: `${confPassword.value}`,
+    name: `${name.value}`,
+    lastName: `${surname.value}`,
+  };
+
+  event.preventDefault();
+  if (name.value !== "" && surname.value !== "" && email.value !== "" && password.value !== "" && confPassword.value !== "") {
+    if (confPassword.value === password.value) {
+        const record = await pb.collection("users").create(data); //enviar record para pocketbase
+    } else {
+      alert("Passwords are different.");
+      // Clear input fields or provide feedback to the user
+      confPassword.value = "";
+    }
+  }
+  // (optional) send an email verification request
+  //await pb.collection('users').requestVerification(`${email.value}`);
+}
+
+document.getElementById("doRegist").addEventListener("click", () => {
+  createUser();
+});
