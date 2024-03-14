@@ -97,7 +97,10 @@ document.addEventListener("mousemove", function() {
 setInterval(checkActivity, 1000);
 */
 
-/* Seria ent 
+/* Organização
+
+tratamento de dados ....
+
 let isLoggedIn = false;
 const inactivityTimeout = 10 * 60 * 1000; // 10 minutos
 let lastActivityTime = Date.now();
