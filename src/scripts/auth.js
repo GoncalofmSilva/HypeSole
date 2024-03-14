@@ -17,7 +17,7 @@ export function getAuthStore() {
 // Outras funcionalidades de autenticação...
 
 // Após o login bem-sucedido, chama esta função para passar as informações para auth.js
-loginSuccess(initAuthStore);
+authenticateUser(initAuthStore);
 */
 
 /*
