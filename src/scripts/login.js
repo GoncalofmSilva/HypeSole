@@ -19,12 +19,8 @@ togglePassword.onclick = function () {
 
 // doLogin
 let email = document.getElementById("email")
-let doLogin = document.getElementById("doLogin")
 
-let currentEmail = "hypesole@gmail.com" // "Select email from users"
-let currentPassword = "hypesole" // "Select password from users"
-
-doLogin.onclick = function(event) {
+/*doLogin.onclick = function(event) {
     event.preventDefault();
     if(email.value == currentEmail && password.value == currentPassword){
         window.location.href = "/"
@@ -37,7 +33,7 @@ doLogin.onclick = function(event) {
       }
 };
 
-/*// Função para autenticar o usuário
+/* Função para autenticar o usuário
 async function authenticateUser(callback) {
   try {
     // Verificar se o usuário existe com o nome de usuário ou email fornecido

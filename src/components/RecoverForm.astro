@@ -3,22 +3,22 @@
         <img src="/images/logo.png">
         <p>Email</p>
         <div class="user">
-            <input type="text" name="user" placeholder="Email">
+            <input type="text" name="user" placeholder="Email" required id="email">
         </div>
 
         <p class="tag">New Password</p>
         <div class="password">
-            <input type="password" name="password" placeholder="Password" required id="password">
+            <input type="password" name="password" placeholder="Password"  id="password">
             <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
         </div>
 
         <p class="tag">Confirm Password</p>
         <div class="password">
-            <input type="password" name="password" placeholder="Password" required id="confPassword">
+            <input type="password" name="password" placeholder="Password"  id="confPassword">
             <i class="fa-solid fa-eye-slash" id="toggleConfPassword"></i>
         </div>
 
-        <button type="submit">Login</button>
+        <button type="button" id="doRecover">Recover Password</button>
 
         <!--<div class="loging_icon">
                 <a href="#"><img src="image/google.png"></a>
@@ -28,4 +28,4 @@
     </form>
 </div>
 
-<script> import '../scripts/register.js'</script>
+<script> import '../scripts/recover.js'</script>
