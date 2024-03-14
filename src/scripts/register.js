@@ -73,3 +73,44 @@ async function createUser() {
 document.getElementById("doRegist").addEventListener("click", () => {
   createUser();
 });
+
+/*async function createUser() {
+  // example create data
+  const data = {
+    email: email.value,
+    emailVisibility: true,
+    password: password.value,
+    passwordConfirm: confPassword.value,
+    name: name.value,
+    lastName: surname.value,
+  };
+
+  event.preventDefault();
+
+  if (name.value.trim() === "" || surname.value.trim() === "" || email.value.trim() === "" || password.value.trim() === "" || confPassword.value.trim() === "") {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  if (confPassword.value !== password.value) {
+    alert("Passwords do not match.");
+    confPassword.value = "";
+    return;
+  }
+
+  try {
+    // Check if the email already exists
+    if (await searchExistingEmail(email.value)) {
+      alert("Email is already in use.");
+      return;
+    }
+
+    // Create the user if the email is not in use
+    const record = await pb.collection("users").create(data);
+    console.log("User created:", record);
+    // Optionally, you can redirect the user or show a success message.
+  } catch (error) {
+    console.error("Error creating user:", error);
+    // Optionally, you can show an error message to the user.
+  }
+}*/
