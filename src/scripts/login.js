@@ -44,12 +44,14 @@ async function authenticateUser(callback) {
     const existingUsers = await pb.collection('users').getList(1, 1, { filter: `email == "${email}"` });
     if (existingUsers.length === 0) {
       throw new Error('User not found.');
+      password.value = ""
     }
 
     // Comparar a senha fornecida com a senha armazenada no banco de dados
     const user = existingUsers[0];
     if (user.password !== password) {
       throw new Error('Invalid password.');
+      password.value = ""
     }
 
     // Autenticar o usuário se a senha estiver correta
@@ -59,6 +61,8 @@ async function authenticateUser(callback) {
     console.log(pb.authStore.isValid);
     console.log(pb.authStore.token);
     console.log(pb.authStore.model.id);
+
+    window.location.href = "/"
     
     // Chama o callback com as informações do authStore
     callback(authStore);
