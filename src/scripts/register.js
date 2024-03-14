@@ -1,5 +1,4 @@
-import PocketBase from "pocketbase";
-const pb = new PocketBase("http://127.0.0.1:8090");
+import pb from "./pocketbase.js";
 
 // Get the password input and toggle button elements
 let password = document.getElementById("password");
