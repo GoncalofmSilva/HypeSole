@@ -19,6 +19,7 @@ export function getAuthStore() {
 // Após o login bem-sucedido, chama esta função para passar as informações para auth.js
 loginSuccess(initAuthStore);
 */
+
 /*
 <!-- HTML -->
 <div id="icon">Ícone</div>
