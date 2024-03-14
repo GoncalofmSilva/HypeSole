@@ -1,5 +1,5 @@
 import pb from "./pocketbase.js";
-import { loginSuccess } from "./login.js";
+import { authenticateUser } from "./login.js";
 
 /*
 let authStore = null;
