@@ -48,7 +48,7 @@ closePopup.onclick = function () {
 
 async function searchExistingEmail(email) {
   const resultList = await pb.collection("users").getList(1, 50, {
-    filter: `email = ${email}`,
+    filter: `email == ${email}`,
   });
   console.log(resultList);
   return resultList;
