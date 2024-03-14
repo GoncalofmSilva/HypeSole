@@ -36,44 +36,11 @@ let surname = document.getElementById("surname");
 let email = document.getElementById("email");
 let confPassword = document.getElementById("confPassword");
 
-async function searchExistingEmail(email) {
-  const resultList = await pb.collection("users").getList(1, 50, {
-    filter: `email == ${email}`,
-  });
-  console.log(resultList);
-  return resultList;
-}
-
-async function createUser() {
-  // example create data
-  const data = {
-    email: `${email.value}`,
-    emailVisibility: true,
-    password: `${password.value}`,
-    passwordConfirm: `${confPassword.value}`,
-    name: `${name.value}`,
-    lastName: `${surname.value}`,
-  };
-
-  event.preventDefault();
-  if (name.value !== "" && surname.value !== "" && email.value !== "" && password.value !== "" && confPassword.value !== "") {
-    if (confPassword.value === password.value) {
-        const record = await pb.collection("users").create(data); //enviar record para pocketbase
-    } else {
-      alert("Passwords are different.");
-      // Clear input fields or provide feedback to the user
-      confPassword.value = "";
-    }
-  }
-  // (optional) send an email verification request
-  //await pb.collection('users').requestVerification(`${email.value}`);
-}
-
 document.getElementById("doRegist").addEventListener("click", () => {
   createUser();
 });
 
-/*async function createUser() {
+async function createUser() {
   // example create data
   const data = {
     email: email.value,
@@ -98,18 +65,13 @@ document.getElementById("doRegist").addEventListener("click", () => {
   }
 
   try {
-    // Check if the email already exists
-    if (await searchExistingEmail(email.value)) {
-      alert("Email is already in use.");
-      return;
-    }
-
     // Create the user if the email is not in use
     const record = await pb.collection("users").create(data);
     console.log("User created:", record);
+
     // Optionally, you can redirect the user or show a success message.
   } catch (error) {
     console.error("Error creating user:", error);
     // Optionally, you can show an error message to the user.
   }
-}*/
+}
