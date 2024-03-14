@@ -36,15 +36,6 @@ let name = document.getElementById("name");
 let surname = document.getElementById("surname");
 let email = document.getElementById("email");
 let confPassword = document.getElementById("confPassword");
-let popup = document.getElementById("popup");
-
-// doClosePopup
-let closePopup = document.getElementById("closePopup");
-
-closePopup.onclick = function () {
-  popup.classList.remove("open-popup");
-  window.location.href = "/";
-};
 
 async function searchExistingEmail(email) {
   const resultList = await pb.collection("users").getList(1, 50, {
