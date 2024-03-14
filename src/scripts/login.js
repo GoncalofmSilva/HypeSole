@@ -130,7 +130,6 @@ function checkActivity() {
 
 // Função para realizar logout
 function logout() {
-  isLoggedIn = false;
   // Limpar o token de autenticação e quaisquer outros dados de sessão
   pb.authStore.clear();
   // Atualizar a interface do usuário
