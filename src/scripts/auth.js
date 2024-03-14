@@ -1,4 +1,24 @@
 import pb from "./pocketbase.js";
+import { loginSuccess } from "./login.js";
+
+/*
+let authStore = null;
+
+// Função para inicializar o authStore
+export function initAuthStore(store) {
+  authStore = store;
+}
+
+// Função para acessar as informações do authStore
+export function getAuthStore() {
+  return authStore;
+}
+
+// Outras funcionalidades de autenticação...
+
+// Após o login bem-sucedido, chama esta função para passar as informações para auth.js
+loginSuccess(initAuthStore);
+*/
 /*
 <!-- HTML -->
 <div id="icon">Ícone</div>
