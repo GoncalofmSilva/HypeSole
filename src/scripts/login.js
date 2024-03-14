@@ -1,3 +1,5 @@
+import pb from "./pocketbase.js";
+
 // Get the password input and toggle button elements
 let password = document.getElementById("password");
 let togglePassword = document.getElementById("togglePassword");
