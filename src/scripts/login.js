@@ -20,38 +20,11 @@ togglePassword.onclick = function () {
 // doLogin
 let email = document.getElementById("email")
 
-/*doLogin.onclick = function(event) {
-    event.preventDefault();
-    if(email.value == currentEmail && password.value == currentPassword){
-        window.location.href = "/"
-    }
-    else {
-        alert("Invalid username or password. Please try again.");
-        // Clear input fields or provide feedback to the user
-        email.value = ""
-        password.value = ""
-      }
-};
-
-/* Função para autenticar o usuário
+// Função para autenticar o usuário
 async function authenticateUser(callback) {
   try {
-    // Verificar se o usuário existe com o nome de usuário ou email fornecido
-    const existingUsers = await pb.collection('users').getList(1, 1, { filter: `email == "${email}"` });
-    if (existingUsers.length === 0) {
-      throw new Error('User not found.');
-      password.value = ""
-    }
-
-    // Comparar a senha fornecida com a senha armazenada no banco de dados
-    const user = existingUsers[0];
-    if (user.password !== password) {
-      throw new Error('Invalid password.');
-      password.value = ""
-    }
-
     // Autenticar o usuário se a senha estiver correta
-    const authData = await pb.collection('users').authWithPassword(email, password);
+    const authData = await pb.collection('users').authWithPassword(email.value, password.value);
     
     // Após a autenticação, você pode acessar os dados de autenticação na authStore
     console.log(pb.authStore.isValid);
@@ -69,4 +42,7 @@ async function authenticateUser(callback) {
     throw error; // Você pode lidar com o erro de acordo com as necessidades do seu aplicativo
   }
 }
- */
+
+document.getElementById("doLogin").addEventListener("click", () => {
+  authenticateUser();
+});
