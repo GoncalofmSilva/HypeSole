@@ -67,3 +67,39 @@ async function authenticateUser(usernameOrEmail, password) {
   }
 }
  */
+
+/*
+<!-- HTML -->
+<div id="icon">Ícone</div>
+<div id="topics" style="display: none;">
+  <ul>
+    <li>Perfil</li>
+    <li>Logout</li>
+  </ul>
+</div>
+
+Função para mudar o icon para a lista
+
+// JavaScript
+let isLoggedIn = false;
+
+// Função chamada após o login ser efetuado com sucesso
+function handleLoginSuccess() {
+  isLoggedIn = true;
+  updateUI();
+}
+
+// Função para atualizar a interface com base no estado de login
+function updateUI() {
+  const iconElement = document.getElementById("icon");
+  const topicsElement = document.getElementById("topics");
+
+  if (isLoggedIn) {
+    iconElement.style.display = "none";
+    topicsElement.style.display = "block";
+  } else {
+    iconElement.style.display = "block";
+    topicsElement.style.display = "none";
+  }
+}
+*/
