@@ -38,7 +38,7 @@ doLogin.onclick = function(event) {
 };
 
 /*// Função para autenticar o usuário
-async function authenticateUser(usernameOrEmail, password) {
+async function authenticateUser(callback) {
   try {
     // Verificar se o usuário existe com o nome de usuário ou email fornecido
     const existingUsers = await pb.collection('users').getList(1, 1, { filter: `email == "${email}"` });
@@ -53,12 +53,15 @@ async function authenticateUser(usernameOrEmail, password) {
     }
 
     // Autenticar o usuário se a senha estiver correta
-    const authData = await pb.collection('users').authWithPassword(usernameOrEmail, password);
+    const authData = await pb.collection('users').authWithPassword(email, password);
     
     // Após a autenticação, você pode acessar os dados de autenticação na authStore
     console.log(pb.authStore.isValid);
     console.log(pb.authStore.token);
     console.log(pb.authStore.model.id);
+    
+    // Chama o callback com as informações do authStore
+    callback(authStore);
 
     return authData;
   } catch (error) {
