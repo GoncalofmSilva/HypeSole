@@ -81,13 +81,19 @@ async function authenticateUser(usernameOrEmail, password) {
 Função para mudar o icon para a lista
 
 // JavaScript
-let isLoggedIn = false;
+let isLoggedIn = pb.authStore.isValid;
 
-// Função chamada após o login ser efetuado com sucesso
-function handleLoginSuccess() {
-  isLoggedIn = true;
+// Função para verificar o estado de login a cada intervalo de tempo
+function checkLoginStatus() {
+  isLoggedIn = pb.authStore.isValid;
   updateUI();
 }
+
+// Chamada inicial para verificar o estado de login
+checkLoginStatus();
+
+// Configuração do intervalo de verificação do estado de login (por exemplo, a cada 10 minutos)
+setInterval(checkLoginStatus, 10 * 60 * 1000); // Verifica a cada 10 minutos
 
 // Função para atualizar a interface com base no estado de login
 function updateUI() {
@@ -102,4 +108,5 @@ function updateUI() {
     topicsElement.style.display = "none";
   }
 }
+
 */
