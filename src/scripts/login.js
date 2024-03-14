@@ -109,4 +109,39 @@ function updateUI() {
   }
 }
 
+
+// Logout automatico
+
+let isLoggedIn = pb.authStore.isValid;
+
+// Definir tempo limite de inatividade (por exemplo, 10 minutos)
+const inactivityTimeout = 10 * 60 * 1000; // 10 minutos
+let lastActivityTime = Date.now();
+
+// Função para verificar a atividade do usuário
+function checkActivity() {
+  const currentTime = Date.now();
+  const elapsedTime = currentTime - lastActivityTime;
+
+  if (elapsedTime >= inactivityTimeout) {
+    logout();
+  }
+}
+
+// Função para realizar logout
+function logout() {
+  isLoggedIn = false;
+  // Limpar o token de autenticação e quaisquer outros dados de sessão
+  pb.authStore.clear();
+  // Atualizar a interface do usuário
+  updateUI();
+}
+
+// Atualizar o tempo da última atividade sempre que houver interação do usuário
+document.addEventListener("mousemove", function() {
+  lastActivityTime = Date.now();
+});
+
+// Verificar a atividade do usuário a cada segundo
+setInterval(checkActivity, 1000);
 */
