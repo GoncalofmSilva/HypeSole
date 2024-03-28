@@ -1,12 +1,13 @@
 import pb from "./pocketbase.js";
 import { authenticateUser } from "./login.js";
 
-/*
 let authStore = null;
+let isLoggedIn = pb.authStore.isValid;
 
 // Função para inicializar o authStore
 export function initAuthStore(store) {
   authStore = store;
+  console.log(authStore)
 }
 
 // Função para acessar as informações do authStore
@@ -18,7 +19,6 @@ export function getAuthStore() {
 
 // Após o login bem-sucedido, chama esta função para passar as informações para auth.js
 authenticateUser(initAuthStore);
-*/
 
 /*
 <!-- HTML -->
@@ -28,15 +28,12 @@ authenticateUser(initAuthStore);
     <li>Perfil</li>
     <li>Logout</li>
   </ul>
-</div>
+</div>*/
 
-Função para mudar o icon para a lista
-
-// JavaScript
-let isLoggedIn = pb.authStore.isValid;
+//Função para mudar o icon para a lista
 
 // Função para verificar o estado de login a cada intervalo de tempo
-function checkLoginStatus() {
+async function checkLoginStatus() {
   isLoggedIn = pb.authStore.isValid;
   updateUI();
 }
@@ -48,7 +45,7 @@ checkLoginStatus();
 setInterval(checkLoginStatus, 10 * 60 * 1000); // Verifica a cada 10 minutos
 
 // Função para atualizar a interface com base no estado de login
-function updateUI() {
+async function updateUI() {
   const iconElement = document.getElementById("icon");
   const topicsElement = document.getElementById("topics");
 
@@ -63,15 +60,12 @@ function updateUI() {
 
 
 // Logout automatico
-
-let isLoggedIn = pb.authStore.isValid;
-
 // Definir tempo limite de inatividade (por exemplo, 10 minutos)
 const inactivityTimeout = 10 * 60 * 1000; // 10 minutos
 let lastActivityTime = Date.now();
 
 // Função para verificar a atividade do usuário
-function checkActivity() {
+async function checkActivity() {
   const currentTime = Date.now();
   const elapsedTime = currentTime - lastActivityTime;
 
@@ -81,7 +75,7 @@ function checkActivity() {
 }
 
 // Função para realizar logout
-function logout() {
+async function logout() {
   // Limpar o token de autenticação e quaisquer outros dados de sessão
   pb.authStore.clear();
   // Atualizar a interface do usuário
@@ -95,7 +89,6 @@ document.addEventListener("mousemove", function() {
 
 // Verificar a atividade do usuário a cada segundo
 setInterval(checkActivity, 1000);
-*/
 
 /* Organização
 
