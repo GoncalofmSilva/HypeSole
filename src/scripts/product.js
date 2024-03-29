@@ -1,12 +1,12 @@
 const products = [
-  {name: "Adidas Shoes", price: 500.00, id: 1, img: "/images/green.png", sizes: {36: 2, 38: 0, 39: 1}},
-  {name: "Sting Energy Drink", price: 120.00, id: 2, quantity: 1, img: "/images/green.png",},
-  {name: "Umbrella", price: 500.00, id: 3, quantity: 1, img: "/images/green.png",},
-  {name: "Cat Food", price: 900.00, id: 4, quantity: 1, img: "/images/green.png",},
-  {name: "T Shirt", price: 300.00, id: 5, quantity: 1, img: "/images/green.png" },
-  {name: "Book", price: 100.00, id: 6, quantity: 1, img: "/images/green.png" },
-  {name: "T Shirt", price: 300.00, id: 7, quantity: 1, img: "/images/green.png" },
-  {name: "Book", price: 100.00, id: 8, quantity: 0, img: "/images/green.png" },
+  { name: "Adidas Shoes", price: 500.00, id: 1, img: "/images/green.png", sizes: { 36: 2, 38: 0, 39: 1 } },
+  { name: "Sting Energy Drink", price: 120.00, id: 2, quantity: 1, img: "/images/green.png", },
+  { name: "Umbrella", price: 500.00, id: 3, quantity: 1, img: "/images/green.png", },
+  { name: "Cat Food", price: 900.00, id: 4, quantity: 1, img: "/images/green.png", },
+  { name: "T Shirt", price: 300.00, id: 5, quantity: 1, img: "/images/green.png" },
+  { name: "Book", price: 100.00, id: 6, quantity: 1, img: "/images/green.png" },
+  { name: "T Shirt", price: 300.00, id: 7, quantity: 1, img: "/images/green.png" },
+  { name: "Book", price: 100.00, id: 8, quantity: 0, img: "/images/green.png" },
 ];
 
 function getProductByURL(url) {
@@ -54,28 +54,25 @@ function destacarLabels() {
   });
 
   products.forEach((product) => {
-    product.sizes &&
-      Object.entries(product.sizes).forEach(([size, quantity]) => {
-        const label = document.querySelector(
-          `.sizes label[data-size="${size}"]`
-        );
-        if (label) {
-          if (quantity > 0) {
-            label.style.cursor = "pointer"; // Mudar cursor para pointer quando a quantidade for maior que 0
-            label.addEventListener("click", () => {
-              // Remove a classe 'clicked' de todas as labels
-              document.querySelectorAll(".sizes label").forEach((label) => {
-                label.classList.remove("clicked");
-              });
-              // Adiciona a classe 'clicked' apenas à label clicada
-              label.classList.add("clicked");
+    product.sizes && Object.entries(product.sizes).forEach(([size, quantity]) => {
+      const label = document.querySelector(`.sizes label[data-size="${size}"]`);
+      if (label) {
+        if (quantity > 0) {
+          label.style.cursor = "pointer"; // Mudar cursor para pointer quando a quantidade for maior que 0
+          label.addEventListener("click", () => {
+            // Remove a classe 'clicked' de todas as labels
+            document.querySelectorAll(".sizes label").forEach((label) => {
+              label.classList.remove("clicked");
             });
-          } else {
-            label.style.opacity = "0.5";
-            label.style.cursor = "not-allowed"; // Mudar cursor para not-allowed quando a quantidade for 0
-          }
+            // Adiciona a classe 'clicked' apenas à label clicada
+            label.classList.add("clicked");
+          });
+        } else {
+          label.style.opacity = "0.5";
+          label.style.cursor = "not-allowed"; // Mudar cursor para not-allowed quando a quantidade for 0
         }
-      });
+      }
+    });
   });
 }
 
@@ -87,20 +84,23 @@ function defaultSize() {
       .filter((size) => product.sizes[size] > 0)
   );
 
-  // Se houver tamanhos disponíveis
-  for (let i = 0; availableSizes.length > i; i++) {
-    
-    const smallestSize = Math.min(availableSizes[i]);
+  // Verifica se há tamanhos disponíveis
+  if (availableSizes.length > 0) {
+    // Encontra o menor tamanho disponível
+    const smallestSize = Math.min(...availableSizes);
 
-    const label = document.querySelector(`.sizes label[data-size="${smallestSize}"]`);
+    // Itera sobre os tamanhos disponíveis
+    for (let i = 0; i < availableSizes.length; i++) {
+      // Verifica se o tamanho atual é igual ao menor tamanho
+      if (availableSizes[i] === smallestSize) {
+        // Encontra o label correspondente ao menor tamanho
+        const label = document.querySelector(`.sizes label[data-size="${smallestSize}"]`);
 
-    if (label) {
-      // Obtém o conteúdo HTML dentro da label
-      const conteudoHTML = label.innerHTML;
-      // Verifica se o conteúdo HTML é válido
-      if (conteudoHTML) {
-        // Adiciona a classe "clicked" à label
-        label.classList.add("clicked");
+        // Verifica se o label foi encontrado
+        if (label) {
+          // Adiciona a classe "clicked" ao label
+          label.classList.add("clicked");
+        }
       }
     }
   }
