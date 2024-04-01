@@ -9,6 +9,14 @@ const products = [
   { name: "Book", price: 100.00, id: 8, quantity: 0, img: "/images/green.png" },
 ];
 
+import db from "../scripts/database.js";
+
+async function getProductFromDB() {
+  db.query()
+}
+
+getProductFromDB()
+
 function getProductByURL(url) {
   // Decodifica o URL para lidar com espaços codificados como '%20'
   const decodedUrl = decodeURIComponent(url);

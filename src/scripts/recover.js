@@ -1,4 +1,4 @@
-import pb from "./pocketbase.js";
+import db from "../scripts/database.js";
 
 let email = document.getElementById("email")
 async function recoverPassword() {
